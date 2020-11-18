@@ -12,6 +12,8 @@ spec:
      name: graboid
      labels:
        app: graboid
+     annotations:
+         paloaltonetworks.com/firewall: pan-fw    
    spec:
      containers:
      - name: graboid
