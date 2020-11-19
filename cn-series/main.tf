@@ -22,7 +22,7 @@ provider helm {}
 
 resource "helm_release" "cn-series" {
   name       = "cn-series-deploy"
-  repository = "https://paloaltonetworks.github.io/cn-series-hackathon-helm/"
+  repository = "https://paloaltonetworks.github.io/cn-series-helm/"
   chart      = "cn-series"
   version    = "0.1.5"
   timeout    = 600
