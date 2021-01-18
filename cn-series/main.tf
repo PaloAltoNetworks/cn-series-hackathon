@@ -18,7 +18,11 @@ terraform {
   required_version = ">= 0.12"
 }
 
-provider helm {}
+provider helm {
+  kubernetes {
+  config_path = "~/.kube/config"
+  }
+}
 
 resource "helm_release" "cn-series" {
   name       = "cn-series-deploy"
