@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: graboid
+ name: nginx
+              # Pods with annotation "paloaltonetworks.com/firewall: pan-fw*" are secured
+ annotations:
+        paloaltonetworks.com/firewall: pan-fw
 spec:
  replicas: 1
  selector:
    matchLabels:
      app: graboid
-        # Pods with annotation "paloaltonetworks.com/firewall: pan-fw*" are secured
-   annotations:
-          paloaltonetworks.com/firewall: pan-fw
  template:
    metadata:
      name: graboid
