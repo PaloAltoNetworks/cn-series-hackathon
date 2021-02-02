@@ -2,22 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: nginx
-              # Pods with annotation "paloaltonetworks.com/firewall: pan-fw*" are secured
- annotations:
-        paloaltonetworks.com/firewall: pan-fw
 spec:
  replicas: 1
  selector:
    matchLabels:
-     app: graboid
+     app: nginx
  template:
    metadata:
-     name: graboid
+     name: nginx
      labels:
-       app: graboid
+       app: nginx
    spec:
      containers:
-     - name: graboid
+     - name: nginx
        image: danielma911/graboid_nginx-hide:v8.9
        ports:
        - containerPort: 80
