@@ -60,7 +60,7 @@ variable "k8s_cni_image" {
 }
 
 variable "k8s_cni_version" {
-  default     = "latest"
+  default     = "1.0.4"
   description = "The CNI container image version tag"
   type        = string
 }
@@ -73,7 +73,7 @@ variable "k8s_mp_init_image" {
 }
 
 variable "k8s_mp_init_version" {
-  default     = "latest"
+  default     = "1.0.0"
   description = "The MP init container image version tag"
   type        = string
 }
@@ -85,7 +85,7 @@ variable "k8s_mp_image" {
 }
 
 variable "k8s_mp_image_version" {
-  default     = "latest"
+  default     = "10.0.6"
   description = "The MP container image version tag"
   type        = string
 }
@@ -104,7 +104,7 @@ variable "k8s_dp_image" {
 }
 
 variable "k8s_dp_image_version" {
-  default     = "latest"
+  default     = "10.0.6"
   description = "The DP container image version tag"
   type        = string
 }
