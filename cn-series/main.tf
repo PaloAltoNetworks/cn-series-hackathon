@@ -24,6 +24,12 @@ provider helm {
   }
 }
 
+# data resource to allow for obtaining the public ip of the panorama instance
+data "google_compute_instance" "panorama" {
+  name = "panorama"
+  zone = "us-central1-a"
+}
+
 resource "helm_release" "cn-series" {
   name       = "cn-series-deploy"
   repository = "https://paloaltonetworks.github.io/cn-series-hackathon-helm/"
@@ -42,7 +48,7 @@ resource "helm_release" "cn-series" {
   // Panorma values
   set {
     name  = "panorama.ip"
-    value = var.panorama_ip
+    value = data.google_compute_instance.panorama.network_interface.0.access_config.0.nat_ip
     type  = "string"
   }
 
