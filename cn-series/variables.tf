@@ -20,12 +20,6 @@ variable "k8s_environment" {
   type        = string
 }
 
-// Panorama
-variable "panorama_ip" {
-  description = "The primary Panorama IP address"
-  type        = string
-}
-
 variable "panorama_ip2" {
   default     = ""
   description = "The secondary Panorama IP address"
