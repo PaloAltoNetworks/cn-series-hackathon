@@ -170,4 +170,23 @@ resource "helm_release" "cn-series" {
     value = "true"
     type  = "string"
   }
+
+  set {
+    name  = "serviceAccount.name"
+    value = "pan-plugin-user"
+    type  = "string"
+  }
+}
+
+# generate the k8s secret file and initiate download to client
+resource "null_resource" "obtain_k8s_secret_file" {
+  triggers = {
+    time_stamp = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command = "kubectl get secret `kubectl get serviceaccounts pan-plugin-user -n kube-system -o jsonpath='{.secrets[0].name}'` -n kube-system -o json > pan-plugin-user.json && cloudshell download-files pan-plugin-user.json"
+  }
+
+  depends_on = [helm_release.cn-series]
 }
